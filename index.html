@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nusrat - Elite Web Developer, SEO Writer, AI Explorer Portfolio" />
+  <meta name="keywords" content="Web Developer, Portfolio, HTML, CSS, JavaScript, SEO, C++, AI" />
+  <meta name="author" content="Nusrat Ullah" />
+
+  <title>Nusrat | Founder-Level Portfolio</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#020617;
+      color:#e2e8f0;
+      overflow-x:hidden;
+    }
+
+    body.light{
+      background:#f1f5f9;
+      color:#0f172a;
+    }
+
+    canvas{
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:-1;
+    }
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      padding:15px;
+      background:rgba(15,23,42,0.6);
+      backdrop-filter:blur(12px);
+      z-index:1000;
+    }
+
+    nav a{
+      color:#e2e8f0;
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    nav a:hover{color:#38bdf8;}
+
+    header{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    header h1{
+      font-size:3.8rem;
+    }
+
+    .typing{
+      font-size:1.2rem;
+      color:#94a3b8;
+      margin-top:10px;
+      border-right:2px solid #38bdf8;
+      white-space:nowrap;
+      overflow:hidden;
+      width:0;
+      animation:typing 4s steps(40,end) forwards;
+    }
+
+    @keyframes typing{
+      from{width:0}
+      to{width:100%}
+    }
+
+    section{
+      max-width:1000px;
+      margin:auto;
+      padding:90px 20px;
+    }
+
+    h2{color:#38bdf8;margin-bottom:15px;}
+
+    .card{
+      background:rgba(30,41,59,0.7);
+      padding:20px;
+      border-radius:15px;
+      margin-bottom:20px;
+      transition:0.3s;
+    }
+
+    .card:hover{transform:translateY(-6px);}
+
+    .btn{
+      margin-top:10px;
+      padding:10px 15px;
+      background:#38bdf8;
+      color:black;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      display:inline-block;
+      cursor:pointer;
+    }
+
+    .skills span{
+      display:inline-block;
+      background:#334155;
+      padding:6px 10px;
+      margin:5px;
+      border-radius:20px;
+      font-size:13px;
+    }
+
+    .top-controls{
+      position:fixed;
+      top:70px;
+      right:20px;
+      display:flex;
+      gap:10px;
+      z-index:1000;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:15px;
+    }
+
+    input,textarea{
+      width:100%;
+      padding:10px;
+      margin-top:8px;
+      border-radius:8px;
+      border:none;
+    }
+
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="top-controls">
+  <button class="btn" onclick="toggleTheme()">Theme</button>
+  <button class="btn" onclick="toggleChat()">AI</button>
+  <a class="btn" href="resume.pdf" download>Resume</a>
+</div>
+
+<header>
+  <h1>Hi, I'm Nusrat</h1>
+  <div class="typing">Founder • Developer • AI Builder • SEO Expert</div>
+  <a class="btn" href="#projects">Explore Work</a>
+</header>
+
+<section id="about">
+  <h2>About</h2>
+  <div class="card">
+    CS student building AI tools, web apps, and real-world tech projects. Goal: Study abroad and build a global tech company.
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="card">
+    <span class="skills">HTML</span>
+    <span class="skills">CSS</span>
+    <span class="skills">JavaScript</span>
+    <span class="skills">C++</span>
+    <span class="skills">SEO</span>
+    <span class="skills">AI Basics</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Live GitHub Projects</h2>
+  <div id="repo" class="projects-grid"></div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <input placeholder="Your Name" />
+    <input placeholder="Your Email" />
+    <textarea placeholder="Message"></textarea>
+    <button class="btn">Send</button>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:20px;color:#94a3b8;">
+  © 2026 Nusrat | Founder Portfolio
+</footer>
+
+<script>
+function toggleTheme(){document.body.classList.toggle('light')}
+
+function toggleChat(){alert("AI upgrade coming with backend API integration")}
+
+/* PARTICLES */
+const c=document.getElementById('particles');
+const x=c.getContext('2d');
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+let p=[];
+for(let i=0;i<70;i++)p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:2});
+function a(){
+  x.clearRect(0,0,c.width,c.height);
+  x.fillStyle="#38bdf8";
+  p.forEach(e=>{x.beginPath();x.arc(e.x,e.y,e.r,0,Math.PI*2);x.fill();e.y+=0.5;if(e.y>c.height)e.y=0});
+  requestAnimationFrame(a);
+}
+a();
+
+/* GITHUB API LOADER */
+fetch("https://api.github.com/users/octocat/repos")
+.then(r=>r.json())
+.then(data=>{
+  let box=document.getElementById("repo");
+  data.slice(0,6).forEach(repo=>{
+    box.innerHTML+=`
+      <div class='card'>
+        <h3>${repo.name}</h3>
+        <p>${repo.description||"No description"}</p>
+        <a class='btn' href='${repo.html_url}' target='_blank'>GitHub</a>
+      </div>
+    `;
+  })
+})
+</script>
+
+</body>
+</html>
