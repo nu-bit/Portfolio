@@ -3,149 +3,287 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nusrat - Modern Developer Portfolio" />
+  <meta name="description" content="Nusrat Ullah - Modern Developer Portfolio" />
   <meta name="keywords" content="Web Developer, Portfolio, HTML, CSS, JavaScript, SEO, C++, AI" />
   <meta name="author" content="Nusrat Ullah" />
 
-  <title>Nusrat | Developer Portfolio</title>
+  <title>Nusrat Ullah | Full Stack Developer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Inter',sans-serif;
-      scroll-behavior:smooth;
+    :root {
+      --bg: #030712;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.4);
+      --text-main: #f3f4f6;
+      --text-dim: #94a3b8;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    body{
-      background:#0b0f19;
-      color:#e5e7eb;
-      overflow-x:hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
     }
 
-    .glow{
-      position:fixed;
-      width:600px;
-      height:600px;
-      background:radial-gradient(circle,rgba(56,189,248,0.25),transparent 60%);
-      top:-200px;
-      left:-200px;
-      filter:blur(40px);
-      z-index:-1;
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    nav{
-      position:fixed;
-      top:0;
-      width:100%;
-      display:flex;
-      justify-content:center;
-      gap:30px;
-      padding:18px;
-      background:rgba(15,23,42,0.7);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,0.05);
-      z-index:1000;
+    /* Animated Background Background */
+    .glow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
     }
 
-    nav a{
-      color:#cbd5e1;
-      text-decoration:none;
-      font-size:14px;
+    .glow-1 {
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+      filter: blur(80px);
+      animation: float 20s infinite alternate;
     }
 
-    nav a:hover{color:#38bdf8;}
-
-    header{
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:20px;
+    .glow-2 {
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.2), transparent 70%);
+      filter: blur(80px);
+      animation: float 15s infinite alternate-reverse;
     }
 
-    .badge{
-      padding:6px 12px;
-      background:rgba(56,189,248,0.1);
-      border:1px solid rgba(56,189,248,0.3);
-      border-radius:999px;
-      font-size:12px;
-      color:#38bdf8;
-      margin-bottom:15px;
+    @keyframes float {
+      from { transform: translate(0, 0); }
+      to { transform: translate(100px, 50px); }
     }
 
-    header h1{
-      font-size:3.8rem;
-      font-weight:800;
-      background:linear-gradient(90deg,#38bdf8,#a78bfa);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 1000;
     }
 
-    header p{color:#94a3b8;max-width:600px;}
-
-    .btn{
-      margin-top:20px;
-      padding:10px 16px;
-      background:#38bdf8;
-      color:#000;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:600;
-      cursor:pointer;
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      text-transform: uppercase;
     }
 
-    section{
-      max-width:1000px;
-      margin:auto;
-      padding:90px 20px;
+    nav a:hover {
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
-    h2{color:#38bdf8;margin-bottom:20px;}
-
-    .card{
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.08);
-      padding:20px;
-      border-radius:16px;
-      margin-bottom:20px;
-      backdrop-filter:blur(10px);
+    /* Header Section */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:15px;
+    .badge {
+      padding: 8px 16px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 100px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 24px;
+      animation: fadeInDown 1s ease;
     }
 
-    .tag{
-      display:inline-block;
-      padding:6px 10px;
-      margin:5px;
-      border-radius:999px;
-      background:rgba(56,189,248,0.1);
-      color:#93c5fd;
-      font-size:12px;
+    header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #fff, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    footer{
-      text-align:center;
-      padding:30px;
-      color:#64748b;
+    header p {
+      color: var(--text-dim);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 30px;
     }
 
+    .btn-primary {
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #000;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 24px;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    h2::after {
+      content: "";
+      height: 1px;
+      flex-grow: 1;
+      background: linear-gradient(to right, var(--accent), transparent);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 32px;
+      border-radius: 24px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      background: rgba(17, 24, 39, 0.9);
+      transform: translateY(-5px);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .tag:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    /* Project Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .project-card p {
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+
+    /* Contact Links */
+    .contact-link {
+      display: block;
+      color: var(--text-main);
+      text-decoration: none;
+      margin: 15px 0;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+      padding-left: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { gap: 15px; }
+      header h1 { font-size: 3rem; }
+    }
   </style>
 </head>
 <body>
 
-<div class="glow"></div>
+<div class="glow-container">
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+</div>
 
 <nav>
   <a href="#about">About</a>
@@ -155,51 +293,65 @@
 </nav>
 
 <header>
-  <div class="badge">Available for opportunities</div>
+  <div class="badge">✨ Open for Collaborations</div>
   <h1>Nusrat Ullah</h1>
-  <p>Web Developer • SEO Writer • AI Explorer • Founder Mindset</p>
-  <a class="btn" href="#projects">View Projects</a>
+  <p>CS Student & Web Developer crafting functional, high-performance digital experiences with an AI-first mindset.</p>
+  <a class="btn-primary" href="#projects">Explore My Work</a>
 </header>
 
 <section id="about">
-  <h2>About</h2>
-  <div class="card">CS student building AI + web apps + real-world systems.</div>
+  <h2>About Me</h2>
+  <div class="card">
+    <p style="font-size: 1.2rem; color: var(--text-main);">
+      I am a Computer Science student passionate about bridging the gap between complex backend logic and sleek user interfaces. Currently focusing on <strong>AI integration</strong> and <strong>Modern Web Frameworks</strong> to build real-world solutions.
+    </p>
+  </div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
-  <div class="card">
-    <span class="tag">HTML</span>
-    <span class="tag">CSS</span>
-    <span class="tag">JavaScript</span>
-    <span class="tag">C++</span>
-    <span class="tag">SEO</span>
-    <span class="tag">AI Basics</span>
+  <h2>Tech Stack</h2>
+  <div class="skills-grid">
+    <span class="tag">HTML5 / CSS3</span>
+    <span class="tag">JavaScript (ES6+)</span>
+    <span class="tag">C++ Programming</span>
+    <span class="tag">SEO Strategy</span>
+    <span class="tag">AI Implementation</span>
+    <span class="tag">Responsive Design</span>
+    <span class="tag">Technical Writing</span>
   </div>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>Featured Projects</h2>
   <div class="grid">
-    <div class="card">
-      <h3>Agency Website</h3>
-      <p>Modern web agency project</p>
-      <a class="btn" href="https://nu-bit.github.io/agency_web/">View Code</a>
+    <div class="card project-card">
+      <div style="font-size: 0.8rem; color: var(--accent); margin-bottom: 10px;">WEB DEVELOPMENT</div>
+      <h3>Agency Web Solution</h3>
+      <p>A high-performance landing page designed for modern digital agencies focusing on conversion and clean UI.</p>
+      <a class="contact-link" href="https://nu-bit.github.io/agency_web/" target="_blank">View Live Demo →</a>
+    </div>
+    
+    <div class="card project-card">
+      <div style="font-size: 0.8rem; color: var(--accent); margin-bottom: 10px;">CONTENT ENGINE</div>
+      <h3>Tech & Science Blog</h3>
+      <p>A professional blog platform where I share insights on emerging technologies and scientific breakthroughs.</p>
+      <a class="contact-link" href="https://techandscience1122.blogspot.com" target="_blank">Visit Blog →</a>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
+  <h2>Get In Touch</h2>
   <div class="card">
-    <p>Email: nusratwazir10@gmail.com</p>
-    <p>LinkedIn: www.linkedin.com/in/nusrat-ullah-32284136b</p>
-    <p>Visit my blog: <a href="https://techandscience1122.blogspot.com" target="_blank" rel="noopener">techandscience1122.blogspot.com</a></p>
+    <p style="margin-bottom: 20px; color: var(--text-dim);">I'm always looking for interesting projects. Whether you have a question or just want to say hi, my inbox is open.</p>
+    <a href="mailto:nusratwazir10@gmail.com" class="contact-link">📧 nusratwazir10@gmail.com</a>
+    <a href="https://www.linkedin.com/in/nusrat-ullah-32284136b" class="contact-link" target="_blank">🔗 LinkedIn Profile</a>
+    <a href="https://techandscience1122.blogspot.com" class="contact-link" target="_blank">✍️ Read my latest articles</a>
   </div>
 </section>
 
 <footer>
-  © 2026 Nusrat Ullah All copyrights reserved
+  <p>© 2026 Nusrat Ullah. Built with precision and passion.</p>
 </footer>
 
 </body>
